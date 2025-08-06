@@ -1,0 +1,20 @@
+# .github/workflows/auto-update.yml
+name: Auto Update
+
+on:
+  schedule:
+    - cron: '0 * * * *'  # Every hour
+  workflow_dispatch:
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v2
+
+      - name: Run Update Script
+        run: |
+          echo "Running auto-update..."
+          # example: pull changes from another repo
+          git pull origin main
